@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- <head>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <title> Title </title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="/main.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="images/teal 4.png">
+</head> -->
+
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Highlight.js style (pick any theme) -->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
+
+  <!-- Highlight.js library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+  <!-- Initialize Highlight.js -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      hljs.highlightAll();
+    });
+  </script>
+
+    <!-- Highlight.js Line Numbers plugin -->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/styles/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+
+  <!-- Initialize line numbers -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      hljs.highlightAll();
+      hljs.initLineNumbersOnLoad();
+    });
+  </script>
+
+
+  <script>
+
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$','$$'], ['\\[','\\]']],
+        tags: 'ams',              // <-- enables equation numbering + references
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<!-- 
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script> -->
+  <title>Azure ML Deployment — Project</title>
+  <link rel="stylesheet" href="../css/main.css" />
+</head>
+
+<body>
+    <div class="top-menu-left">
+        <a class="menu-link-left" href="../index.html"><i class="fa-solid fa-arrow-left"></i> Back to Projects</a>
+        <!-- <a class="menu-link" href="../index.html">Projects</a>
+        <a class="menu-link" href="../cv.html">CV</a>
+        <a class="menu-link" href="../about.html">About Me</a> -->
+    </div>
+
+  <main class="project-details">
+    <h1> Evaluating Encoder vs Decoder Models for Scientific Named Entity Recognition </h1>
+    <h2 class="article-subtitle"> José Ricardo Torres Heredia </h2>
+    <br>
+
+    <img src="../images/NER.png" alt="Project img" class="article__img">
+    <br>
+    <p>
+      
+      We consider a network of layers $0,1,2,\ldots,L$, where layers labeled $0$ and $L$ are the input and output layers, respectively. By $n_\ell$ we mean the number of neurons in some layer $\ell$, while by $m$ denotes the number of examples in the batch.
+      
+      \begin{equation}\label{eq: feedforward}
+          \mathbf{Z}^{[\ell]} = \mathbf{W}^{[\ell]}\mathbf{A}^{[\ell-1]}+\mathbf{b}^{[\ell]},
+      \end{equation}
+      
+      where $\mathbf{W}^{[\ell]}\in\mathbb{R}^{n_\ell\times n_{\ell-1}}$ is the weight matrix connecting layer $\ell-1$ to layer $\ell$, and $\mathbf{A}^{[\ell-1]}\in\mathbb{R}^{n_{\ell-1}\times m}$ is the activation matrix output from layer $\ell-1$ and input to layer $\ell$.
+      The bias vector is $\mathbf{b}^{[\ell]}\in\mathbb{R}^{n_\ell\times 1}$, although what is actually considered is $\mathbf{b}^{[\ell]}\mathbf{1}_m^T\in\mathbb{R}^{n_\ell\times m}$, broadcasting (i.e. stretching the smaller array to match the larger one for operations) the bias vector so that the matrix addition works as usual, it is convention to just use eq.~\ref{eq: feedforward} considering $\mathbf{b}^{[\ell]}$ to be added at the column level to $\mathbf{Z}^{[\ell]} = \begin{bmatrix} \mathbf{z}_1 & \mathbf{z}_2 & \cdots & \mathbf{z}_m \end{bmatrix}$ and coding implementations rely on broadcasting implicitly.}. 
+      The result pre-activation is therefore $\mathbf{Z}^{[\ell]}\in\mathbb{R}^{n_\ell\times m}$.
+    </p>
+
+    <p>
+      The deployment workflow includes:
+    </p>
+
+    <pre><code class="language-python">
+    record = df.iloc[0].to_dict()
+
+def convert_to_ner_prompt_readable(record):
+    # 1. Flatten all sentences into one text string
+    tokens = sum(record["sentences"], [])
+    text = " ".join(tokens)
+
+    # 2. Flatten all entity spans
+    entities_flat = [span for sentence in record["ner"] for span in sentence]
+
+    # 3. Build readable output lines
+    target_lines = []
+    for start, end, label in entities_flat:
+        entity_tokens = tokens[start:end+1]
+        entity_text = " ".join(entity_tokens)
+        target_lines.append(f"{entity_text} → {label}")
+
+    # 4. Build prompt and answer
+    prompt = f"Extract named entities from the following text:\n\n{text}\n"
+    answer = "\n".join(target_lines)
+
+    return prompt, answer
+
+
+convert_to_ner_prompt(record)
+    </code></pre>
+
+    <ul>
+      <li>Data preprocessing in Python notebooks</li>
+      <li>Model comparison using Azure AutoML</li>
+      <li>Deploying the best model as an API endpoint</li>
+      <li>Testing the deployed inference endpoint</li>
+    </ul>
+
+    <!-- <a href="../index.html" class="back-link">← Back to Projects</a> -->
+  </main>
+
+</body>
+</html>

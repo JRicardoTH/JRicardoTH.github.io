@@ -1,0 +1,437 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <title>Ricardo Torres | Portfolio</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="images/teal 4.png">
+</head>
+
+<body>
+
+    <!-- Top horizontal menu -->
+    <div class="top-menu">
+        <span class="menu-link" onclick="showSection('projects')">Projects</span>
+        <span class="menu-link" onclick="showSection('experience')">CV</span>
+        <span class="menu-link" onclick="showSection('about')">About Me</span>
+    </div>
+
+    <div class="layout">
+        <!-- Left column -->
+        <div class="left-column">
+            <header class="header">
+                <div class="profile">
+                    <img src="images/1080_1080.jpg" alt="Profile photo" class="profile__img">
+                    <h1 class="profile__name">José Ricardo Torres Heredia</h1>
+                    <p class="profile__bio">
+                        Physics graduate turned Data Analyst with 2+ years of experience, now pursuing further academic
+                        studies in AI/ML.
+                    </p>
+                    <div class="profile__links">
+                        <a href="mailto:ricardo.tohe@outlook.com"><i
+                                class="fa-solid fa-envelope"></i>&nbsp;&nbsp;ricardo.tohe@outlook.com</a>
+                        <a href="https://www.linkedin.com/in/ricardo-torres-heredia/"><i
+                                class="fa-brands fa-linkedin"></i>&nbsp;&nbsp;LinkedIn</a>
+                        <a href="https://github.com/JRicardoTH"><i
+                                class="fa-brands fa-github"></i>&nbsp;&nbsp;GitHub</a>
+                    </div>
+                </div>
+            </header>
+        </div>
+
+        <!-- Right column -->
+        <div class="right-column">
+            <!--******************************** SECTION: Projects ********************************-->
+            <div id="projects" class="section active">
+                <h2 class="section-title">Projects</h2>
+
+                <!--_________________________________ PROJECT _________________________________-->
+                <div class="project">
+                    <img src="images/nba eda.PNG" class="project__img">
+                    <div class="project__content">
+                        <h3 class="project__title">
+                            <a href="projects/azure1.html" class="project-link">CNN Classification of RFI and Astrophysical Phenomena</a>
+                        </h3>
+                        <p class="project__description">
+                            Classification of human-made radio interference for SETI via a convolutional neural 
+                            network on spectrogram data from Breakthrough Listen’s Green Bank Telescope (GBT).
+                        </p>
+                        <div class="project__icons">
+                            <a href="" class="project-link"><i
+                                    class="fa-brands fa-github"></i>&nbsp;&nbsp;GitHub</a>
+                            <a href="" class="project-link"><i
+                                    class="fa-brands fa-kaggle"></i>&nbsp;&nbsp;Kaggle</a>
+                        </div>
+                    </div>
+                </div>
+                <hr class="divider">
+
+
+                <!--_________________________________ PROJECT _________________________________-->
+                <div class="project">
+                    <img src="images/nba eda.PNG" class="project__img">
+                    <div class="project__content">
+                        <h3 class="project__title">
+                            <a href="projects/azure1.html" class="project-link">Evaluating and Adapting LLMs for Theorem Proving in Set Theory</a>
+                        </h3>
+                        <p class="project__description">
+                            Evaluation of LLEMMA-7B, Mistral-7B and Phi-3-mini models for baseline, 
+                            retrieval-augmented and LoRA-adapted variants with a curated set theory data set.
+                        </p>
+                        <div class="project__icons">
+                            <a href="" class="project-link"><i
+                                    class="fa-brands fa-github"></i>&nbsp;&nbsp;GitHub</a>
+                            <a href="" class="project-link"><i
+                                    class="fa-brands fa-medium"></i>&nbsp;&nbsp;Medium</a>
+                        </div>
+                    </div>
+                </div>
+                <hr class="divider">
+
+
+
+                <!--_________________________________ PROJECT _________________________________-->
+                <div class="project">
+                    <img src="images/nba eda.PNG" class="project__img">
+                    <div class="project__content">
+                        <h3 class="project__title">
+                            <a href="projects/azure1.html" class="project-link">An Overview of Automated Theorem
+                                Proving</a>
+                        </h3>
+                        <p class="project__description">
+                            Historical and mathematical background of ATP from Resolution to LLMs (in progress).
+                        </p>
+                        <div class="project__icons">
+                            <a href="" class="project-link"><i
+                                    class="fa-brands fa-medium"></i>&nbsp;&nbsp;Article</a>
+                        </div>
+                    </div>
+                </div>
+                <hr class="divider">
+
+
+
+                <!--_________________________________ PROJECT _________________________________-->
+                <div class="project">
+                    <img src="images/NER.png" class="project__img">
+                    <div class="project__content">
+                        <h3 class="project__title">
+                            <a href="projects/sciner-project.html" class="project-link">Evaluating Encoder vs Decoder-Only Models for SciNER</a>
+                        </h3>
+                        <p class="project__description">
+                            Comparing Scientific Named Entity Recognition performance from zero-shot 
+                            LLMs vs fine-tuned encoder-based transformers using AI/ML paper abstracts from SciERC dataset.
+                        </p>
+                        <div class="project__icons">
+                            <a href="" class="project-link"><i
+                                    class="fa-brands fa-kaggle"></i>&nbsp;&nbsp;Kaggle</a>
+                            <a href="" class="project-link"><i
+                                    class="fa-brands fa-github"></i>&nbsp;&nbsp;GitHub</a>
+                            <a href="" class="project-link"><i
+                                    class="fa-brands fa-medium"></i>&nbsp;&nbsp;Medium</a>
+                        </div>
+                    </div>
+                </div>
+                <hr class="divider">
+
+
+                <!--_________________________________ PROJECT _________________________________-->
+                <div class="project">
+                    <img src="images/nn2.png" class="project__img">
+                    <div class="project__content">
+                        <h3 class="project__title">
+                            <a href="projects/ml-methods-project.html" class="project-link">Machine Learning Methods from Scratch in Python</a>
+                        </h3>
+                        <p class="project__description">
+                            Mathematical overview of ML methods with Python implementations from scratch: Neural Network with customizable X; 
+                            Decision Tree with customizable X,; and Random Forest with X,Y.
+                        </p>
+                        <div class="project__icons">
+                            <a href="" class="project-link"><i
+                                    class="fa-brands fa-github"></i>&nbsp;&nbsp;GitHub</a>
+                            <a href="" class="project-link"><i
+                                    class="fa-brands fa-medium"></i>&nbsp;&nbsp;Medium</a>
+                            <a href="" class="project-link"><i
+                                    class="fa-brands fa-medium"></i>&nbsp;&nbsp;Medium</a>
+                        </div>
+                    </div>
+                </div>
+                <hr class="divider">
+
+
+                <!--_________________________________ PROJECT _________________________________-->
+                <div class="project">
+                    <img src="images/Spotify YT.png" class="project__img">
+                    <div class="project__content">
+                        <h3 class="project__title">
+                            <a href="projects/azure1.html" class="project-link">Cluster Analysis in the Music
+                                Industry</a>
+                        </h3>
+                        <p class="project__description">
+                            A Python exploration of distributions, correlations and patterns of song attributes
+                            in music data with EDA and K-Means Clustering with visualization through PCA.
+                        </p>
+                        <div class="project__icons">
+                            <a href="https://www.kaggle.com/code/ricardotorresheredia/spotify-youtube-data-eda-and-cluster-analysis" class="project-link"><i
+                                    class="fa-brands fa-kaggle"></i>&nbsp;&nbsp;Kaggle</a>
+                        </div>
+                    </div>
+                </div>
+                <hr class="divider">
+
+
+
+                <!--_________________________________ PROJECT _________________________________-->
+                <div class="project">
+                    <img src="images/tableau img.png" class="project__img">
+                    <div class="project__content">
+                        <h3 class="project__title">
+                            <a href="projects/azure1.html" class="project-link">Multi-Page Tableau Dashboard for Store
+                                Sales
+                            </a>
+                        </h3>
+                        <p class="project__description">
+                            Tableau Story with dashboards summarizing KPIs from a store sales relational database
+                            using parameters, calculated fields, time series graph, boxplots, maps, etc.
+                        </p>
+                        <div class="project__icons">
+                            <a href="https://public.tableau.com/app/profile/ricardo.torres8443/viz/SuperstoreDashboard1_16933371869500/Story1" class="project-link">
+                                <img src="images/tableau.jpg" class="link-icon">&nbsp;&nbsp;Tableau</a>
+                        </div>
+                    </div>
+                </div>
+                <hr class="divider">
+                <!-- PROJECT -->
+                <div class="project">
+                    <img src="images/NBA scrap.png" class="project__img">
+                    <div class="project__content">
+                        <h3 class="project__title">
+                            <a href="projects/azure1.html" class="project-link">NBA Statistics Analysis from ETL
+                                Pipeline </a>
+                        </h3>
+                        <p class="project__description">
+                            From webscraping and cleaning decades' worth of raw NBA data into a public dataset (2200+
+                            downloads) through an
+                            ETL pipeline to sports data analytics and ML.
+                        </p>
+                        <div class="project__icons">
+                            <a href="https://github.com/JRicardoTH/NBA-Stats-Pipeline-and-Analysis" class="project-link"><i
+                                    class="fa-brands fa-github"></i>&nbsp;&nbsp;GitHub</a>
+                            <a href="https://www.kaggle.com/datasets/ricardotorresheredia/nba-stats-from-the-last-71-years" class="project-link"><i
+                                    class="fa-brands fa-kaggle"></i>&nbsp;&nbsp;Kaggle</a>
+                            <a href="" class="project-link"><i
+                                    class="fa-brands fa-medium"></i>&nbsp;&nbsp;Medium</a>
+                        </div>
+                    </div>
+                </div>
+                <hr class="divider">
+
+
+                <!--_________________________________ PROJECT _________________________________-->
+                <div class="project">
+                    <img src="images/LaTeX Guide COVER Better.png" class="project__img">
+                    <div class="project__content">
+                        <h3 class="project__title">
+                            <a href="projects/azure1.html" class="project-link">LaTeX Package Guide for Mathematics,
+                                Physics & Engineering</a>
+                        </h3>
+                        <p class="project__description">
+                            A freely available PDF collection of useful LaTeX packages for physics,
+                            mathematics and engineering along with brief demonstrations of their usage.
+                        </p>
+                        <div class="project__icons">
+                            <a href="" class="project-link"><i
+                                    class="fa-brands fa-github"></i>&nbsp;&nbsp;GitHub</a>
+                        </div>
+                    </div>
+                </div>
+                <hr class="divider">
+
+
+                <!--_________________________________ PROJECT _________________________________-->
+                <div class="project">
+                    <img src="images/StatMech.jpg" class="project__img">
+                    <div class="project__content">
+                        <h3 class="project__title">
+                            <a href="projects/azure1.html" class="project-link">ENG-SPA Translation of Renowned Lectures
+                                on Theoretical Physics </a>
+                        </h3>
+                        <p class="project__description">
+                            The official English-Spanish translation of the Statistical Physics section (190+ pages) of
+                            Dr. David Tong's renowned
+                            “Lectures on Theoretical Physics” from Cambridge.
+
+                        </p>
+                        <div class="project__icons">
+                            <a href="https://www.damtp.cam.ac.uk/user/tong/statphys.html" class="project-link"><img src="images/Cambridge.png" class="link-icon">&nbsp;&nbsp;Website</a>
+                            <a href="https://www.damtp.cam.ac.uk/user/tong/statphys/fisest.pdf" class="project-link"><img src="images/PDFF.png" class="link-icon">&nbsp;&nbsp;PDF</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--******************************** SECTION: CV ********************************-->
+            <div id="experience" class="section">
+                <h1 class="section-title">Curriculum Vitae</h1>
+
+                <!--************** SUBSECTION: Experience **************-->
+                <h2 class="cv-title">Experience</h2>
+                <div class="experience">
+
+                    <!--__________________ Experience: Nielsen/Circana __________________-->
+
+                    <h3 class="alt-title"><img src="images/nlsn.png" alt="Circana Logo" class="experience-icon"> Data
+                        Modeling Analyst &nbsp;|&nbsp; Nielsen / Circana </h3>
+                    <p class="bold-text"><i class="fa-regular fa-calendar"></i>&nbsp;&nbsp; Nov. 2023 -
+                        Present: (2
+                        years, 2 months) </p>
+                    <p>I implement and maintain regression-based econometric models for client Marketing
+                        Mix,
+                        automating the preprocessing pipeline with VBA and analyzing results in Excel and R.
+                    </p>
+                </div>
+                <hr class="divider">
+
+                <!--************** SUBSECTION: Education **************-->
+                <h2 class="cv-title">Education</h2>
+                <div class="experience">
+
+                    <!--__________________ Education: Master __________________-->
+
+                    <h3 class="alt-title"><img src="images/upf.png" alt="UDLAP Logo" class="experience-icon">
+                        Master in Artificial Intelligence &nbsp;|&nbsp; Universitat Pompeu Fabra,&nbsp; <em>
+                            Present
+                        </em>
+                    </h3>
+                    <!-- <p class="bold-text"><i class="fa-regular fa-calendar"></i>&nbsp;&nbsp; 2018 - 2023 </p> -->
+                    <p> MSc in AI with a specialization in data science. </p>
+
+
+                    <!--__________________ Education: UDLAP Degree __________________-->
+
+                    <h3 class="alt-title"><img src="images/UDLAP.png" alt="UDLAP Logo" class="experience-icon">
+                        Bachelor of Science in Physics &nbsp;|&nbsp; Universidad de las Américas
+                        Puebla,&nbsp; <em> 2023
+                        </em>
+                    </h3>
+                    <!-- <p class="bold-text"><i class="fa-regular fa-calendar"></i>&nbsp;&nbsp; 2018 - 2023 </p> -->
+                    <p> BSc in Physics with 9.1/10 grade. </p>
+
+
+                    <!--__________________ Education: UNAM Internship __________________-->
+                    
+                    <h3 class="alt-title"><img src="images/Instituto-Fisica-color.png" alt="UDLAP Logo"
+                            class="experience-icon">
+                        Cosmology Internship &nbsp;|&nbsp; Institute of Physics (UNAM),&nbsp; <em> 2023
+                        </em>
+                    </h3>
+                    <!-- <p class="bold-text"><i class="fa-regular fa-calendar"></i>&nbsp;&nbsp; Jun. 2022 - May 2023: (1 year) </p> -->
+                    <div class="bold-text"><a
+                            href="https://www.researchgate.net/publication/371782979_Cosmology_of_the_Early_Universe_with_Axions"
+                            class="project-link"><i class="fa-solid fa-link"></i>&nbsp;&nbsp;Cosmology of
+                            the Early
+                            Universe with Axions</a></div>
+                    <p> A coding-intensive one-year research internship, thesis and seminar surveying and
+                        testing
+                        several models of inflationary cosmology involving
+                        axion particles against the latest PLANCK observations on the Cosmic Microwave
+                        Background
+                        Radiation.</p>
+
+                    <!--__________________ Education: ODU Internship __________________-->
+                    
+                    <h3 class="alt-title"><img src="images/odu.jpg" alt="UDLAP Logo" class="experience-icon">
+                        Summer Internship &nbsp;|&nbsp; Old Dominion University,&nbsp; <em> 2022 </em>
+                    </h3>
+                    <!-- <p class="bold-text"><i class="fa-regular fa-calendar"></i>&nbsp;&nbsp; Jul. 2022 - Ago. 2022: (2 months) </p> -->
+                    <div class="bold-text"><a href="https://digitalcommons.odu.edu/reyes-2022/5/"
+                            class="project-link"><i class="fa-solid fa-link"></i>&nbsp;&nbsp;Challenging
+                            Predictions of
+                            Inflationary Models with
+                            CMB Data</a></div>
+                    <p> International student research project and proceedings paper on axion-based cosmic
+                        inflationary models. Part of ODU's REYES program.</p>
+                </div>
+                <hr class="divider">
+
+                <!--************** SUBSECTION: Certificates **************-->
+                <h2 class="cv-title">Certificates</h2>
+                <div class="experience">
+                    
+                    <!--__________________ Certificate: TensorFlow __________________-->
+
+                    <h3 class="alt-title"><img src="images/DL.jpg" alt="DL Logo" class="experience-icon">
+                        TensorFlow Developer Professional Certificate &nbsp;|&nbsp; DeepLearning.AI</h3>
+                    <p>Worked on data analysis, modeling, and visualization projects. Focused on business
+                        insights and
+                        reporting.</p>
+                    <!--__________________ Certificate: Ethics of AI __________________-->
+
+                    <h3 class="alt-title"><img src="images/UH.png" alt="DL Logo" class="experience-icon">
+                        Ethics of AI &nbsp;|&nbsp; University of Helsinki</h3>
+                    <p>Worked on data analysis, modeling, and visualization projects. Focused on business
+                        insights and
+                        reporting.</p>
+                    <!--__________________ Certificate: Computer Science __________________-->
+
+                    <h3 class="alt-title"><img src="images/prince.svg" alt="DL Logo" class="experience-icon">
+                        Computer Science: Algorithms, Theory & Machines &nbsp;|&nbsp; Princeton University
+                    </h3>
+                    <p>Worked on data analysis, modeling, and visualization projects. Focused on business
+                        insights and
+                        reporting.</p>
+                </div>
+                <hr class="divider">
+
+                <!--************** SUBSECTION: IT Skills **************-->
+                <h2 class="cv-title">IT Skills</h2>
+                <p class="bold-text-centered"> 
+                    Python (TensorFlow, Sklearn, PyTorch, HugginFace, NLTK, PySpark)   &nbsp;<span class="bold-dot">&middot;</span>&nbsp; 
+                    Excel       &nbsp;<span class="bold-dot">&middot;</span>&nbsp;
+                    LaTeX       &nbsp;<span class="bold-dot">&middot;</span>&nbsp; 
+                    SQL         &nbsp;<span class="bold-dot">&middot;</span>&nbsp; 
+                    R           &nbsp;<span class="bold-dot">&middot;</span>&nbsp; 
+                    PowerBI     &nbsp;<span class="bold-dot">&middot;</span>&nbsp; 
+                    Tableau     &nbsp;<span class="bold-dot">&middot;</span>&nbsp;
+                    Prolog      &nbsp;<span class="bold-dot">&middot;</span>&nbsp; 
+                    Lean        &nbsp;<span class="bold-dot">&middot;</span>&nbsp;
+                    NoSQL       &nbsp;<span class="bold-dot">&middot;</span>&nbsp; 
+                    Azure       &nbsp;<span class="bold-dot">&middot;</span>&nbsp; 
+                    Git         &nbsp;<span class="bold-dot">&middot;</span>&nbsp;
+                    HTML/CSS         &nbsp;<span class="bold-dot">&middot;</span>&nbsp;
+                    PowerShell </p>
+            </div>
+
+
+            <!--******************************** SECTION: About Me ********************************-->
+            <div id="about" class="section">
+                <h2 class="section-title">About Me</h2>
+                <p>
+                    I am a Physics graduate turned Data Analyst with interests in AI, ML, and automated
+                    theorem proving.
+                    I
+                    enjoy working on projects that combine programming, logic, and mathematics.
+                </p>
+                <p>
+                    Outside of work, I like music, reading, and exploring innovative tech solutions.
+                </p>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <script>
+        function showSection(id) {
+            document.querySelectorAll('.section').forEach(sec => sec.classList.remove('active'));
+            document.getElementById(id).classList.add('active');
+        }
+    </script>
+
+</body>
+
+</html>
