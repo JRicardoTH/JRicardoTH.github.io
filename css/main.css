@@ -227,7 +227,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 .project-details p {
-    font-size: 20px;
+    font-size: 1.25rem;
     margin-bottom: 20px;
 }
 
@@ -241,6 +241,13 @@ h1, h2, h3, h4, h5, h6 {
     font-size: 20px;
     margin-bottom: 20px;
     padding-left: 25px;
+}
+
+.project-details p,
+.project-details ol,
+.project-details ul,
+.project-details li {
+  font-size: 1.25rem;
 }
 
 .back-link {
@@ -284,6 +291,98 @@ h1, h2, h3, h4, h5, h6 {
 
 
 
+
+/* Container that resets reference numbering */
+.article {
+  counter-reset: ref;
+}
+
+/* Reference-style links */
+.ref-link {
+  counter-increment: ref;
+  text-decoration: none;
+  color: #1e90ff;   /* CHANGE COLOR HERE */
+  font-weight: 500;
+  cursor: pointer;
+}
+
+/* Display as [1], [2], ... */
+.ref-link::before {
+  content: "[" counter(ref) "]";
+}
+
+
+
+
+
+
+
+.quote {
+  max-width: 690px;
+  margin: 1rem auto;
+  font-size: 1.1rem;
+  font-style: italic;
+  text-align: center;
+  color: #555;
+  line-height: 1.6;
+}
+
+.quote-author {
+  display: block;
+  margin-top: 0.75rem;
+  font-size: 0.85rem;
+  font-style: normal;
+  color: #777;
+}
+
+
+
+
+
+.pseudoalgorithm {
+  max-width: 780px;
+  margin: 1rem auto;
+  font-size: 1.1rem;
+  text-align: left;
+  color: #555;
+  line-height: 1.6;
+}
+
+
+
+
+.hspace {
+  display: inline-block;
+  width: 1.5rem;   /* adjust spacing */
+}
+
+
+
+
+.algorithm {
+  max-width: 650px;
+  margin: 2.5rem auto;
+  padding: 1.25rem 1.5rem;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  background: #fafafa;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.algorithm ol {
+  padding-left: 1.4rem;
+}
+
+.algorithm li {
+  margin-bottom: 0.4rem;
+}
+
+
+
+
+
+
 .hljs-ln-numbers {
   color: #888;
   text-align: right;
@@ -294,18 +393,66 @@ h1, h2, h3, h4, h5, h6 {
   padding-left: 12px;
 }
 
+pre {
+  padding: 0;
+  margin: 1.5rem auto;
+}
 
-/* Increase horizontal spacing between line numbers and code */
+pre code.hljs {
+  padding: 0 !important;
+}
+
+.hljs-ln {
+  border-collapse: collapse;
+}
+
 .hljs-ln td.hljs-ln-numbers {
-    padding-right: 30px !important;   /* space to the right of line numbers */
+  color: #888;
+  text-align: right;
+  padding-right: 10px;
+  user-select: none;
 }
 
 .hljs-ln td.hljs-ln-code {
-    padding-left: 10px !important;    /* optional: extra padding before code */
+  padding-left: 10px;
+}
+
+
+/* Increase horizontal spacing between line numbers and code */
+.hljs-ln td.hljs-ln-numbers {
+    padding-right: 2px !important;   /* space to the right of line numbers */
+}
+
+.hljs-ln td.hljs-ln-code {
+    padding-left: 2px !important;    /* optional: extra padding before code */
 }
 
 
 
+/* ------ THEOREM, DEFINITION & PROOF ENVIRONMENTS ------ */
+.theorem {
+  margin: 5pt 0;
+  font-size: 1.25rem;
+  line-height: 1.6;
+}
+
+.theorem-title {
+  font-weight: bold;
+  margin-right: 0.8em;   /* space after header */
+}
+
+
+/* ------ MISCELLANEOUS FORMATS ------ */
+
+/* --- rDash math symbol --- */
+.flip-math mjx-container {
+  display: inline-block;
+  transform: scaleX(-1);
+}
+
+
+
+/* ----------------------------- */
 
 
 /* --- Responsive for mobile --- */

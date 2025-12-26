@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!-- <head>
+    <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+    <title> Title </title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+    <link rel="stylesheet" href="/main.css" />
+    <link rel="shortcut icon" type="image/x-icon" href="images/teal 4.png">
+</head> -->
+
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Highlight.js style (pick any theme) -->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
+
+  <!-- Highlight.js library -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+
+  <!-- Initialize Highlight.js -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      hljs.highlightAll();
+    });
+  </script>
+
+    <!-- Highlight.js Line Numbers plugin -->
+  <link rel="stylesheet"
+        href="https://cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/styles/default.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/highlightjs-line-numbers.js/2.8.0/highlightjs-line-numbers.min.js"></script>
+
+  <!-- Initialize line numbers -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      hljs.highlightAll();
+      hljs.initLineNumbersOnLoad();
+    });
+  </script>
+
+
+  <script>
+
+  window.MathJax = {
+    tex: {
+      inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$','$$'], ['\\[','\\]']],
+        tags: 'ams',              // <-- enables equation numbering + references
+      },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
+<!-- 
+  <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script> -->
+  <title> ATP Overview </title>
+  <link rel="stylesheet" href="../css/main.css?v=1" />
+</head>
+
+<body>
+    <div class="top-menu-left">
+        <a class="menu-link-left" href="../index.html"><i class="fa-solid fa-arrow-left"></i> Back to Projects</a>
+        <!-- <a class="menu-link" href="../index.html">Projects</a>
+        <a class="menu-link" href="../cv.html">CV</a>
+        <a class="menu-link" href="../about.html">About Me</a> -->
+    </div>
+
+  <main class="project-details">
+    <h1> An Overview of Automated Theorem Proving </h1>
+    <h2 class="article-subtitle"> José Ricardo Torres Heredia </h2>
+    <br>
+
+    <!-- <img src="../images/NER.png" alt="Project img" class="article__img"> -->
+    <!-- <br> -->
+    <h2>
+        Introduction
+    </h2>
+    <p>
+      By the early twentieth century, David Hilbert sought to demonstrate the consistency of mathematics and realize his formalist vision 
+      in defiance of the intuitionist school led by L. E. J. Brouwer. In 1928, he published along with his student Wilhelm Ackermann a 
+      book on the principles of theoretical logic, in which they posed the "Entscheidungsproblem", an inquiry on the possibility 
+      of an algorithm that could test the validity of a formula in first-order logic (FOL).
+      <!-- <a href="https://arxiv.org/abs/1808.09602" class="ref-link"></a>.  -->
+      This problem became central to the emerging field of formal logic and inspired subsequent work on the mechanization of reasoning. 
+      <br><br>
+      Around this time, Jacques Herbrand pursued the same goal of formalizing logic, but focused on provability of theorems rather than 
+      semantic validity. In 1930, he laid the foundation of what would later become Herbrand's theorem, which shows that the provability 
+      of a first-order formula can be reduced to the propositional satisfiability of a finite set of its ground instances 
+      <!-- \cite{Herbrand}.  -->
+      This result provided a crucial bridge between first-order logic and propositional reasoning, making automated proof search conceivable 
+      in principle. However, a formula's proof is constructed by searching through a potentially infinite set of ground instances, which is 
+      impractical. 
+      <br><br>
+      Progress was made in the coming years such that by 1936, Alonzo Church, building on his previous work with $\lambda$-calculus to 
+      study effective computability, discovered the non-terminating reduction of some lambda expressions into normal forms.
+      <!-- \cite{Church}.  -->
+      In this same year, Alan Turing introduced his model of computation via Turing machines, and showed the arising halting problem 
+      &mdash; whether a machine will halt for any given input &mdash; to be undecidable.
+      <!-- \cite{Turing}. -->
+       Together, these independent findings by Church and Turing proved that the algorithm which the "Entscheidungsproblem" investigates is impossible.
+       <br><br>
+       In 1938, Claude E. Shannon showed that the calculus for manipulating relay and switching circuits equations is isomorphic to the 
+       propositional calculus of symbolic logic. His paper laid the foundation for the construction of truth-value logic machines and 
+       introduced methods for designing and simplifying circuits. Inspired by this, two Harvard undergraduates, William Burkhart and 
+       Theodore A. Kalin built in 1947 the first electrical machine for propositional logic by arranging through switches circuit patterns
+       isomorphic to the combined input premises and scanning its truth table one line at a time. A much more refined version of the 
+       Kalin-Burkhart machine was developed in the 1950s by Allen Newell, Cliff Shaw, and Herbert A. Simon in their efforts to understand 
+       human logical reasoning by replicating it computationally. Their Logic Theory Machine (LTM) was used to prove theorems from the 
+       Principia Mathematica, a landmark work by Alfred North Whitehead and Bertrand Russell, which formalized much of mathematics in 
+       symbolic logic. 
+       <br>
+       The LTM was an important milestone in automated theorem proving and one of the first significant AI programs, partly due to its 
+       introduction of the heuristic method, which prioritizes more efficient paths or shortcuts to a solution, alternative to exhausting
+       extensive proof sequences. While champions of the more mechanistic approach which emphasizes axiomatic completeness argue that 
+       heuristics comprise no more than a partial method with no guarantee of a general solution, proponents of heuristic methods retort 
+       that this technique simulates human intuition, which the mechanical approach disregards altogether. 
+       <br>
+       The next important example of the heuristic method was the Geometry Theorem Machine developed during the 1950s by Herbert Gelernter
+       and collaborators. They introduced the problem reduction technique, where a search space of subgoals was created and each tackled 
+       individually. By 1959, this was refined into the Euclidean Geometry Prover, which used diagrams to guide or restrict the proofs, 
+       incorporating non-symbolic reasoning into automated theorem proving for the first time. 
+       <br><br>
+       The mid-twentieth century marked the establishment of FOL as the standard framework for ATP. Among the notable contributions was 
+       James Gilmore’s formalization and implementation of Herbrand’s procedure on a digital computer 
+       <!-- \cite{Gilmore}.  -->
+       Hao Wang pattern recognition 
+       <!-- \cite{Wang}. -->
+       <br><br>
+       Then came the Davis-Putnam algorithm by Martin Davis and Hilary Putnam, which introduced a resolution rule to eliminate 
+       complementary literals in a propositional formula expressed as a conjunctive normal form until a contradiction is arrived at, 
+       indicating unsatisfiability, or no contradiction appears, proving satisfiability. Due to the computationally expensive exhaustive 
+       clause search, the refined Davis-Putnam-Logemann-Loveland (DPLL) algorithm employed heuristics to assign truth values to literals 
+       and explore the consequences recursively, backtracking and trying the opposite truth value for a previously chosen literal every 
+       time a contradiction is arrived at. 
+       <br><br>
+       A landmark development was made in 1965 by John A. Robinson in the form of his Resolution Method. It was a refutation based method 
+       for proving unsatisfiability, essentially an extension of the Davis-Putnam algorithm to FOL through unification. However, by using 
+       the single inference rule of Resolution it avoided the need for axioms.
+       <!-- \cite{Robinson}. -->
+       <br>
+    </p>
+ 
+    <p>
+      
+    </p>
+
+
+
+    </p>
+    <h2> Mathematical Background </h2>
+    <h3> Propositional Logic </h3>
+    
+    <p>
+        A propositional logic, also called zeroth-order logic, is concerned with statements constructed from a collection of symbols 
+        $p,q,\ldots$ called propositional variables. The term "variable" here does have the same meaning as that used in first-order 
+        logic which is closer to the standard algebraic definition. By propositional variables we only mean the atomic formulas 
+        $p_1,p_2,\ldots,p_n$, the building blocks of propositional calculus. We also have a logical signature which lists the operations 
+        that characterize the formal language. 
+        We then consider the <em>syntax</em> as that which defines what statements are valid and how to construct them, along with 
+       <em>semantics</em>, which focuses on how to interpret such valid statements. 
+       <br>
+       Formally, a statement is an $n$-ary <em>truth function</em> which maps $n$-tuples of truth values to truth values, written 
+       $f:\mathcal{V}^n\rightarrow\mathcal{V}$.
+       <br>
+       Classical propositional logic is a two-valued ($|\mathcal{V}|=2$) truth-functional logic. This means it rests on the 
+       <em>principle of bivalence</em>, which only allows truth values true (T or $\top$) or false (F or $\bot$), as well as the 
+       <em>principle of truth-functionality</em>, which requires that the truth value of a composite statement is determined only 
+       by the truth values of its component statements.
+       Defining the truth conditions of compound propositions is achieved via propositional connectives such as $\neg, \wedge, \vee, 
+       \rightarrow$, $\leftrightarrow$ and others. For simplicity, in this paper we adopt the signature $\{\neg, \wedge, \vee, 
+       \rightarrow, \leftrightarrow\}$, even though simpler options are available. The aforementioned syntax defines grammatically 
+       correct expressions in the following manner.
+    </p>
+    <div class="theorem">
+        <span class="theorem-title"> Definition 2.1 </span> 
+        A <em>well-formed formula</em> (WFF) is defined by
+        <ol>
+            <li> Every propositional variable, also called <em>atomic formula</em> or simply <em>atom</em>, is a WFF.</li>
+            <li> If $\alpha$ and $\beta$ are WFFs, then $\neg\alpha$, $(\alpha\wedge\beta)$, $(\alpha\vee\beta)$, 
+                $(\alpha\rightarrow\beta)$ and $(\alpha\leftrightarrow\beta)$ are also WFFs.</li>
+        </ol>
+    </div>
+        <div class="theorem">
+        <span class="theorem-title"> Definition 2.2 </span> 
+        If $\mathcal{S}$ is a countable set of atoms, an <em>interpretation</em> or <em>valuation</em>, is a mapping 
+        $I:\mathcal{S}\rightarrow\{\text{T},\text{F}\}$.
+    </div>
+    <p>
+        With these definitions, we can evaluate WFFs under a particular interpretation following the conditions
+    </p>
+        <ol>
+            <li> $I(\neg\alpha)=\neg I(\alpha)$, </li>
+            <li> $I(\alpha\wedge\beta)=I(\alpha)\wedge I(\beta)$, </li>
+            <li> $I(\alpha\vee\beta)=I(\alpha)\vee I(\beta)$ </li>
+            <li> $I(\alpha\rightarrow\beta)=I(\alpha)\rightarrow I(\beta)$, </li>
+            <li> $I(\alpha\leftrightarrow\beta)=I(\alpha)\leftrightarrow I(\beta)$, </li>
+        </ol>
+    <p>
+        given the conventional meaning of every operation in the logical signature.
+    </p>
+    </div>
+        <div class="theorem">
+        <span class="theorem-title"> Definition 2.3 </span> 
+        The interpretation $I$ \textit{satisfies} some WFF $\varphi$ iff $I(\varphi)=\text{T}$, and we write this as $I\vDash\varphi$. 
+        A WFF is called a <em>tautology</em> if it is satisfied by all interpretations, <em>satisfiable</em> if it is satisfied by at 
+        least one interpretation, or a <em>contradiction</em> if no interpretation satisfies it.
+    </div>
+    </div>
+        <div class="theorem">
+        <span class="theorem-title"> Definition 2.3 </span> 
+        A set $\Phi$ of WFFs is satisfiable if there is an interpretation $I$ that makes $I(\varphi)=\text{T}$ for all $\varphi \in \Phi$.
+    </div>
+    </div>
+        <div class="theorem">
+        <span class="theorem-title"> Definition 2.4 </span> 
+        A WFF $\varphi$ is a <em>logical consequence</em> of some formulas $\psi_1,\psi_2,\ldots,\psi_n$, or equivalently, a logical 
+        consequence of the set $X=\{\psi_1,\psi_2,\ldots,\psi_n\}$, expressed as $X\vDash\varphi$, iff every interpretation that makes 
+        $\psi_1,\psi_2,\ldots,\psi_n$ true, also makes $\varphi$ true, rendering $\psi_1\wedge\psi_2\wedge\ldots\wedge\psi_n\rightarrow\varphi$ 
+        a tautology. In other words, $v(X)=\text{T}$ implies that $v(\varphi)=\text{T}$.
+    </div>
+    </div>
+    <div class="theorem">
+        <span class="theorem-title"> Definition 2.5 </span> 
+        Two WFFs $\varphi$ and $\psi$ are <em>logically</em>, <em>semantically</em> or <em>tautologically equivalent</em>, written 
+        $\varphi\equiv\psi$ if for all interpretations $I$, $I(\varphi)=I(\psi)$, and the same thing applies for their Boolean truth 
+        functions $f_\alpha=f_\beta$, which results in $\varphi\leftrightarrow\psi$ being a tautology. Since this is the same case in 
+        which $\varphi\vDash\psi$ and also $\psi\vDash\varphi$ (i.e. excluding $\bot\rightarrow\top$).
+    </div>
+    <!-- <span class="flip-math">$\vDash$</span> -->
+    <div class="theorem">
+        <span class="theorem-title"> Definition 2.5 </span> 
+        A <em>literal</em> or <em>elementary formula</em> is an atomic formula or the negation of an atomic formula.
+    </div>
+    <div class="theorem">
+        <span class="theorem-title"> Definition 2.5 </span> 
+        A <em>clause</em> is a disjunction of literals.
+    </div>
+    <div class="theorem">
+        <span class="theorem-title"> Definition 2.5 </span> 
+        For some clauses $q_1,q_2,q_3,\ldots,q_n$, their conjunction, that is, 
+        $(p_1\vee p_2)\wedge(p_3\vee p_4)\wedge\ldots\wedge(p_{n-1}\vee p_n)$ is called a <em>Conjunctive Normal Form (CNF)</em>.
+    </div>
+    <h3> First-Order Logic </h3>
+    <pre><code class="language-python">
+
+    </code></pre>
+    <p>
+      
+    </p>
+    <pre><code class="language-python">
+
+    </code></pre>
+    <p>
+      
+    </p>
+    <pre><code class="language-python">
+
+    </code></pre>
+    <p>
+      
+    </p>
+    <pre><code class="language-python">
+
+    </code></pre>
+
+
+
+
+    <ul>
+      <li>Data preprocessing in Python notebooks</li>
+      <li>Model comparison using Azure AutoML</li>
+      <li>Deploying the best model as an API endpoint</li>
+      <li>Testing the deployed inference endpoint</li>
+    </ul>
+
+    <!-- <a href="../index.html" class="back-link">← Back to Projects</a> -->
+  </main>
+
+</body>
+</html>

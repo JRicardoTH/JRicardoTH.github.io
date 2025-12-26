@@ -61,7 +61,7 @@
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 <!-- 
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script> -->
-  <title>Azure ML Deployment — Project</title>
+  <title> Neural Network from Scratch in Python — Project</title>
   <link rel="stylesheet" href="../css/main.css?v=1" />
 </head>
 
@@ -124,6 +124,21 @@ def convert_to_ner_prompt_readable(record):
 
 convert_to_ner_prompt(record)
     </code></pre>
+
+    <div class="algorithm">
+      <ol>
+        <li><strong>Input:</strong> learning rate $\eta$, initial weights $w_0$</li>
+        <li><strong>Initialize:</strong> $w \leftarrow w_0$</li>
+        <li><strong>Repeat</strong> until convergence:
+          <ol>
+            <li>Compute gradient $\nabla L(w)$</li>
+            <li>Update weights $w \leftarrow w - \eta \nabla L(w)$</li>
+          </ol>
+        </li>
+        <li><strong>Return:</strong> $w$</li>
+      </ol>
+    </div>
+
 
     <ul>
       <li>Data preprocessing in Python notebooks</li>

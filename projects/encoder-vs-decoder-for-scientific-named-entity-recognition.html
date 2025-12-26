@@ -61,7 +61,7 @@
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js"></script>
 <!-- 
   <script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script> -->
-  <title>Azure ML Deployment — Project</title>
+  <title> SciNER with Encoders vs Decoders — Project</title>
   <link rel="stylesheet" href="../css/main.css?v=1" />
 </head>
 
@@ -81,49 +81,129 @@
     <img src="../images/NER.png" alt="Project img" class="article__img">
     <br>
     <p>
-      
-      We consider a network of layers $0,1,2,\ldots,L$, where layers labeled $0$ and $L$ are the input and output layers, respectively. By $n_\ell$ we mean the number of neurons in some layer $\ell$, while by $m$ denotes the number of examples in the batch.
-      
-      \begin{equation}\label{eq: feedforward}
-          \mathbf{Z}^{[\ell]} = \mathbf{W}^{[\ell]}\mathbf{A}^{[\ell-1]}+\mathbf{b}^{[\ell]},
-      \end{equation}
-      
-      where $\mathbf{W}^{[\ell]}\in\mathbb{R}^{n_\ell\times n_{\ell-1}}$ is the weight matrix connecting layer $\ell-1$ to layer $\ell$, and $\mathbf{A}^{[\ell-1]}\in\mathbb{R}^{n_{\ell-1}\times m}$ is the activation matrix output from layer $\ell-1$ and input to layer $\ell$.
-      The bias vector is $\mathbf{b}^{[\ell]}\in\mathbb{R}^{n_\ell\times 1}$, although what is actually considered is $\mathbf{b}^{[\ell]}\mathbf{1}_m^T\in\mathbb{R}^{n_\ell\times m}$, broadcasting (i.e. stretching the smaller array to match the larger one for operations) the bias vector so that the matrix addition works as usual, it is convention to just use eq.~\ref{eq: feedforward} considering $\mathbf{b}^{[\ell]}$ to be added at the column level to $\mathbf{Z}^{[\ell]} = \begin{bmatrix} \mathbf{z}_1 & \mathbf{z}_2 & \cdots & \mathbf{z}_m \end{bmatrix}$ and coding implementations rely on broadcasting implicitly.}. 
-      The result pre-activation is therefore $\mathbf{Z}^{[\ell]}\in\mathbb{R}^{n_\ell\times m}$.
+      Named Entity Recognition (NER) is a natural language processing task to find and classify semantic forms in text belonging to 
+      predefined categories (e.g. person, organization, location), turning unstructured text into structured data. This is often done
+      alongside relation extraction between elements in those categories. NER is useful for information retrieval,
+      text summarization, question answering, machine translation, knowledge base construction, etc. 
+      In this article, we explore the scientific literature for Scientific Named Entity Recognition (SciNER) using and comparing
+      pre-trained encoders to zero and few-shot decoders. This is achieved using SciERC (Scientific Entity Recognition and Classification)
+      <a href="https://arxiv.org/abs/1808.09602" class="ref-link"></a>, a sentence-level NER + relation extraction dataset built from 
+      AI / ML research papers. It is a JSONL file structured in the following way. The single data point or line in the dataset 
+      corresponding to the abstract 
+    </p>
+    <blockquote class="quote">
+      In this paper we describe and evaluate a Question Answering system that goes beyond answering factoid questions. We focus on 
+      FAQ-like questions and answers, and build our system around a noisy-channel architecture which exploits both a language model 
+      for answers and a transformation model for answer/question terms, trained on a corpus of 1 million question/answer pairs 
+      collected from the Web.
+    </blockquote>    
+    <p>
+      would look like this
+    </p>
+    <blockquote class="pseudoalgorithm">
+      {
+      "clusters": [[[8, 10], [29, 29]]],<br>
+      "sentences": [["In", "this", "paper", "we", "describe", "and", "evaluate", "a", "Question", "Answering", "system", "that", <span class="hspace"></span>
+          "goes", "beyond", "answering", "factoid", "questions", "."], ["We", "focus", "on", "FAQ-like", "questions", "and", <span class="hspace"></span>
+          "answers", ",", "and", "build", "our", "system", "around", "a", "noisy-channel", "architecture", "which", "exploits", <span class="hspace"></span>
+          "both", "a", "language", "model", "for", "answers", "and", "a", "transformation", "model", "for", "answer/question", <span class="hspace"></span>
+          "terms", ",", "trained", "on", "a", "corpus", "of", "1", "million", "question/answer", "pairs", "collected", "from", <span class="hspace"></span>
+          <span class="hspace"></span>
+          "the", "Web", "."]], <br>
+      "ner": [[[8, 10, "Method"]], [[21, 24, "Material"], [29, 29, "Generic"], [32, 33, "Method"], [38, 39, "Method"], <span class="hspace"></span>
+          <span class="hspace"></span>
+          [44, 45, "Method"], [62, 62, "Material"]]],<br>
+      "relations": [[], [[29, 29, 21, 24, "USED-FOR"], [32, 33, 29, 29, "USED-FOR"], [32, 33, 38, 39, "USED-FOR"], <span class="hspace"></span>
+          <span class="hspace"></span>
+          [32, 33, 44, 45, "USED-FOR"]]], <br>
+      "doc_key": "N04-1008"
+      }
+    </blockquote>    
+    <p>
+      where the clusters token start and end spans indicate parts of the text referring to the same concept per list (e.g. "system" on 
+      token 29 refers to "Question Answering system" on tokens 8-10); the NER spans outline the entity and categorize it as either "Task",
+      "Method", "Metric", "Material", "OtherScientificTerm" or "Generic"; and the relations dictionary entries indicate spans for the first
+      and second entities and their relation as one of the following: "COMPARE", "PART-OF", "CONJUNCTION", "EVALUATE-FOR", "FEATURE-OF", 
+      "USED-FOR" and "HYPONYM-OF".
     </p>
 
-    <p>
-      The deployment workflow includes:
+
+
     </p>
+
+    <h3> Preprocessing </h3>
+    
+    <p>
+      We first load each JSONL file as a pandas DataFrame:
+    </p>
+    <pre><code class="language-python">
+      base_path = '/content/sciner-methods/data'
+      file_map = {"TRAIN_SET" : "train",
+                  "TEST_SET" : "test",
+                  "VALIDATION_SET" : "dev"}
+      datasets = {}
+
+      for name, filename in file_map.items():
+        file_path = f"{base_path}/{filename}.json"
+
+        try:
+            df = pd.read_json(file_path, lines=True)
+            print(f"\n DataFrame Columns and Data Types for {name}:")
+            df.info()
+            datasets[name] = df
+
+        except FileNotFoundError:
+            print(f"Error: The file '{file_path}' was not found. Please ensure the path is correct.")
+        except Exception as e:
+            print(f"An unexpected error occurred: {e}")
+    </code></pre>
+    <p>
+      We then flatten sentence tokens of each abstract into one list of tokens per abstract and then join them into a string with correct
+      punctiation.
+    </p>
+    <pre><code class="language-python">
+      def flatten_and_detokenize(record):
+      # Flatten sentence tokens into one list per data point (abstract)
+      tokens = [tok for sent in record["sentences"] for tok in sent]
+
+      # Join flattened sentence tokens and fix all leftover spaces between punctuation symbols.
+      text = " ".join(tokens)
+      text = re.sub(r"\s+([.,!?;:%\)\]])", r"\1", text)
+      text = re.sub(r"\(\s+", "(", text)
+      text = re.sub(r"\s+'s\b", "'s", text)
+      text = re.sub(r"\s+'s\b", "'s", text)
+      return text
+    </code></pre>
+    <p>
+      
+    </p>
+
+
 
     <pre><code class="language-python">
-    record = df.iloc[0].to_dict()
 
-def convert_to_ner_prompt_readable(record):
-    # 1. Flatten all sentences into one text string
-    tokens = sum(record["sentences"], [])
-    text = " ".join(tokens)
-
-    # 2. Flatten all entity spans
-    entities_flat = [span for sentence in record["ner"] for span in sentence]
-
-    # 3. Build readable output lines
-    target_lines = []
-    for start, end, label in entities_flat:
-        entity_tokens = tokens[start:end+1]
-        entity_text = " ".join(entity_tokens)
-        target_lines.append(f"{entity_text} → {label}")
-
-    # 4. Build prompt and answer
-    prompt = f"Extract named entities from the following text:\n\n{text}\n"
-    answer = "\n".join(target_lines)
-
-    return prompt, answer
-
-
-convert_to_ner_prompt(record)
     </code></pre>
+    <p>
+      
+    </p>
+    <pre><code class="language-python">
+
+    </code></pre>
+    <p>
+      
+    </p>
+    <pre><code class="language-python">
+
+    </code></pre>
+    <p>
+      
+    </p>
+    <pre><code class="language-python">
+
+    </code></pre>
+
+
+
 
     <ul>
       <li>Data preprocessing in Python notebooks</li>
